@@ -53,5 +53,11 @@ namespace Dictionaries
                 LaadCb();
             }
         }
+
+        private void btnVerwijderen_Click(object sender, EventArgs e)
+        {
+            nederlandsEngels.Remove(cbNederlands.Text);
+            LaadCb();
+        }
     }
 }

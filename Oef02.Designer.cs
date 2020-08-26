@@ -32,6 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cbNederlands = new System.Windows.Forms.ComboBox();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.btnVerwijderen = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblEngels
@@ -72,11 +73,23 @@
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
+            // btnVerwijderen
+            // 
+            this.btnVerwijderen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnVerwijderen.Location = new System.Drawing.Point(49, 57);
+            this.btnVerwijderen.Name = "btnVerwijderen";
+            this.btnVerwijderen.Size = new System.Drawing.Size(112, 23);
+            this.btnVerwijderen.TabIndex = 27;
+            this.btnVerwijderen.Text = "verwijderen";
+            this.btnVerwijderen.UseVisualStyleBackColor = true;
+            this.btnVerwijderen.Click += new System.EventHandler(this.btnVerwijderen_Click);
+            // 
             // Oef02
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(291, 92);
+            this.Controls.Add(this.btnVerwijderen);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.lblEngels);
             this.Controls.Add(this.label1);
@@ -96,5 +109,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbNederlands;
         private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnVerwijderen;
     }
 }
