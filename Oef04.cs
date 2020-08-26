@@ -87,7 +87,7 @@ namespace Dictionaries
                     //miljoen
                     int miljoen = 1000000;
                     woord += maakWoord(nummer / miljoen);
-                    woord += " " + nummers[miljoen] + " ";
+                    woord +=  nummers[miljoen] + " ";
                     nummer = nummer % miljoen;
                 }
                 else if (nummer >= 1000000000 && nummer < 1000000000000000000)
@@ -95,12 +95,11 @@ namespace Dictionaries
                     //miljard
                     int miljard = 1000000000;
                     woord += maakWoord(nummer / miljard);
-                    woord += " " + nummers[miljard] + " ";
+                    woord += nummers[miljard] + " ";
                     nummer = nummer % miljard;
                 }
                 else
                 {
-                    woord += maakWoord(nummer / 1000000000000000000);
                     nummer = 0;
                 }
 
@@ -119,6 +118,11 @@ namespace Dictionaries
                     answer = nummers[(int)nummer] + answer;
                     nummer -= nummer;
                 }
+                else if (nummer < 20)
+                {
+                    answer += nummers[(int)(nummer - (nummer % 10))];
+                    nummer = (nummer % 10);
+                }
                 else if (nummer < 100)
                 {
                     answer += nummers[(int)(nummer - (nummer % 10))];
@@ -136,6 +140,7 @@ namespace Dictionaries
                         }
                     }
                 }
+
             }
             return answer;
 
@@ -143,8 +148,9 @@ namespace Dictionaries
 
         private void numNumber_ValueChanged(object sender, EventArgs e)
         {
-            
+
             lblNummer.Text = (numNumber.Value == 0)? nummers[0] : maakWoord(numNumber.Value);
+
         }
     }
 }
