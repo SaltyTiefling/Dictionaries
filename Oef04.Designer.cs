@@ -69,11 +69,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(563, 53);
             this.Controls.Add(this.lblNummer);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.numNumber);
             this.Name = "Oef04";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Oef04";
             this.Load += new System.EventHandler(this.Oef04_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numNumber)).EndInit();
