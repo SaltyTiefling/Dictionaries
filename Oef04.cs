@@ -47,28 +47,104 @@ namespace Dictionaries
             nummers.Add(1000, "duizend");
             nummers.Add(1000000, "miljoen");
             nummers.Add(1000000000, "miljard");
+
+            numNumber.Value = 400017053977;
         }
 
         private string maakWoord(decimal nummer)
         {
             string woord = "";
-
-            if (nummer <= 0)
+            while (nummer > 0)
             {
-                return nummers[0];
-            }
+                if (nummer == 1)
+                {
+                    woord += nummers[(int)nummer];
+                    nummer -= nummer;
+                }
+                else if (nummer >=2 && nummer < 100)
+                {
+                    woord += tweeTotHonderd(nummer);
+                    nummer -= nummer;
+                }
+                else if (nummer >= 100 && nummer < 1000)
+                {
+                    //honderd
+                    int honderd = 100;
+                    woord += tweeTotHonderd(nummer / honderd);
+                    woord += nummers[honderd] + " ";
+                    nummer = nummer % honderd;
+                }
+                else if (nummer >= 1000 && nummer < 1000000)
+                {
+                    //duizend
+                    int duizend = 1000;
+                    woord += maakWoord(nummer / duizend);
+                    woord += nummers[duizend] + " ";
+                    nummer = nummer % duizend;
+                }
+                else if (nummer >= 1000000 && nummer < 1000000000)
+                {
+                    //miljoen
+                    int miljoen = 1000000;
+                    woord += maakWoord(nummer / miljoen);
+                    woord += " " + nummers[miljoen] + " ";
+                    nummer = nummer % miljoen;
+                }
+                else if (nummer >= 1000000000 && nummer < 1000000000000000000)
+                {
+                    //miljard
+                    int miljard = 1000000000;
+                    woord += maakWoord(nummer / miljard);
+                    woord += " " + nummers[miljard] + " ";
+                    nummer = nummer % miljard;
+                }
+                else
+                {
+                    woord += maakWoord(nummer / 1000000000000000000);
+                    nummer = 0;
+                }
 
-            for (int i = 1; i <= nummer; i++)
-            {
-                woord += nummers[i];
             }
 
             return woord;
         }
 
+        private string tweeTotHonderd(decimal nummer)
+        {
+            string answer = "";
+            while (nummer >= 2)
+            {
+                if (nummer <= 14)
+                {
+                    answer = nummers[(int)nummer] + answer;
+                    nummer -= nummer;
+                }
+                else if (nummer < 100)
+                {
+                    answer += nummers[(int)(nummer - (nummer % 10))];
+                    nummer = (nummer % 10);
+                    if (nummer > 0)
+                    {
+                        if (nummers[(int)nummer].ToCharArray().Last() == 'e')
+                        {
+                            answer = "ën" + answer;
+                        }
+                        else
+                        {
+                            answer = "en" + answer;
+
+                        }
+                    }
+                }
+            }
+            return answer;
+
+        }
+
         private void numNumber_ValueChanged(object sender, EventArgs e)
         {
-            lblNummer.Text = maakWoord(numNumber.Value);
+            
+            lblNummer.Text = (numNumber.Value == 0)? nummers[0] : maakWoord(numNumber.Value);
         }
     }
 }

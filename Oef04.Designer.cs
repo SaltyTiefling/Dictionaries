@@ -37,6 +37,11 @@
             // numNumber
             // 
             this.numNumber.Location = new System.Drawing.Point(13, 13);
+            this.numNumber.Maximum = new decimal(new int[] {
+            -1486618624,
+            232830643,
+            0,
+            0});
             this.numNumber.Name = "numNumber";
             this.numNumber.Size = new System.Drawing.Size(120, 20);
             this.numNumber.TabIndex = 0;
